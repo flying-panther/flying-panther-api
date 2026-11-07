@@ -39,4 +39,9 @@ public class CatalogController : ControllerBase
         item.AddRating(rating);
         return Ok(item);
     }
+       [HttpPut("{id:int}")]
+    public IActionResult Put(int id, Item item)
+    {
+        return NoContent();
+    }
 }
