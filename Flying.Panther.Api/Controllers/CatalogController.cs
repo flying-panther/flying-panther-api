@@ -44,4 +44,9 @@ public class CatalogController : ControllerBase
     {
         return NoContent();
     }
+       [HttpDelete("{id:int}")]
+    public IActionResult Delete(int id)
+    {
+        return NoContent();
+    }
 }
