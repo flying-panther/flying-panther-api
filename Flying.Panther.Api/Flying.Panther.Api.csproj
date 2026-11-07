@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Flying.Panther.Domain\Flying.Panther.Domain.csproj" />
+    <ProjectReference Include="..\Flying.Panther.Data\Flying.Panther.Data.csproj" />
   </ItemGroup>
 
 </Project>
