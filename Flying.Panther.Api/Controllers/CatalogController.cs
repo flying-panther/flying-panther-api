@@ -26,4 +26,9 @@ public class CatalogController : ControllerBase
         item.Id = id;
         return Ok(item);
     }   
+        [HttpPost]
+    public IActionResult Post(Item item)
+    {
+        return Created("/catalog/42", item);
+    }
 }
