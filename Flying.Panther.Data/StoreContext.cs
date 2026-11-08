@@ -1,4 +1,4 @@
-﻿
+﻿using Flying.Panther.Domain.Orders;
 using Flying.Panther.Domain.Catalog;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +12,7 @@ public class StoreContext : DbContext
     }
 
     public DbSet<Item> Items { get; set; } = null!;
+    public DbSet<Order> Orders { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
