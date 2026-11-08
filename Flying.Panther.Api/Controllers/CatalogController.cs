@@ -1,52 +1,109 @@
 using System.Collections.Generic;
 using Flying.Panther.Domain.Catalog;
 using Microsoft.AspNetCore.Mvc;
+using Flying.Panther.Data;
 
 namespace Flying.Panther.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+
 public class CatalogController : ControllerBase
 {
-    [HttpGet]
-    public IActionResult GetItems()
-    {
-        var items = new List<Item>
-        {
-            new Item("Shirt", "Ohio State shirt.", "Nike", 29.99m),
-            new Item("Shorts", "Ohio State shorts.", "Nike", 44.99m)
-        };
+    private readonly StoreContext _db;
 
-        return Ok(items);
-    }
-     [HttpGet("{id:int}")]
-    public IActionResult GetItem(int id)
+    public CatalogController(StoreContext db)
     {
-        var item = new Item("Shirt", "Ohio State shirt.", "Nike", 29.99m);
-        item.Id = id;
-        return Ok(item);
-    }   
-    [HttpPost]
-    public IActionResult Post(Item item)
-    {
-        return Created("/catalog/42", item);
+        _db = db;
     }
-    [HttpPost("{id:int}/ratings")]
-    public IActionResult PostRating(int id, [FromBody] Rating rating)
+
+[HttpGet]
+public IActionResult GetItems()
+{
+    return Ok(_db.Items);
+}
+
+   
+[HttpGet("{id:int}")]
+public IActionResult GetItem(int id)
+{
+    var item = _db.Items.Find(id);
+
+    if (item == null)
     {
-        var item = new Item("Shirt", "Ohio State shirt.", "Nike", 29.99m);
-        item.Id = id;
-        item.AddRating(rating);
-        return Ok(item);
+        return NotFound();
     }
-       [HttpPut("{id:int}")]
-    public IActionResult Put(int id, Item item)
+
+    return Ok(item);
+}
+
+    
+[HttpPost]
+public IActionResult Post(Item item)
+{
+    _db.Items.Add(item);
+    _db.SaveChanges();
+
+    return Created($"/catalog/{item.Id}", item);
+}
+
+   
+[HttpPost("{id:int}/ratings")]
+public IActionResult PostRating(int id, [FromBody] Rating rating)
+{
+    var item = _db.Items.Find(id);
+
+    if (item == null)
     {
-        return NoContent();
+        return NotFound();
     }
-       [HttpDelete("{id:int}")]
-    public IActionResult Delete(int id)
+
+    item.AddRating(rating);
+    _db.SaveChanges();
+
+    return Ok(item);
+}
+     
+[HttpPut("{id:int}")]
+public IActionResult Put(int id, Item item)
+{
+    if (id != item.Id)
     {
-        return NoContent();
+        return BadRequest();
     }
+
+    var existingItem = _db.Items.Find(id);
+
+    if (existingItem == null)
+    {
+        return NotFound();
+    }
+
+    existingItem.Name = item.Name;
+    existingItem.Description = item.Description;
+    existingItem.Brand = item.Brand;
+    existingItem.Price = item.Price;
+
+    _db.SaveChanges();
+
+    return NoContent();
+}
+
+      
+[HttpDelete("{id:int}")]
+public IActionResult Delete(int id)
+{
+    var item = _db.Items.Find(id);
+
+    if (item == null)
+    {
+        return NotFound();
+    }
+
+    _db.Items.Remove(item);
+    _db.SaveChanges();
+
+    return NoContent();
+}
+
 }
