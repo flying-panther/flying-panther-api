@@ -9,7 +9,9 @@ public class StoreContextFactory : IDesignTimeDbContextFactory<StoreContext>
     {
         var optionsBuilder = new DbContextOptionsBuilder<StoreContext>();
 
-        optionsBuilder.UseSqlite("Data Source=FlyingPanther.sqlite");
+       optionsBuilder.UseSqlite(
+    "Data Source=FlyingPanther.sqlite",
+    options => options.MigrationsAssembly("Flying.Panther.Api"));
 
         return new StoreContext(optionsBuilder.Options);
     }
