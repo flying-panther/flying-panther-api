@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flying.Panther.Domain", "Fl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flying.Panther.Api", "Flying.Panther.Api\Flying.Panther.Api.csproj", "{B587FC28-AB33-4732-9F36-F555116F369B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flying.Panther.Data", "Flying.Panther.Data\Flying.Panther.Data.csproj", "{A2E92BB3-0F46-42A5-886E-B4078F92756E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,18 @@ Global
 		{B587FC28-AB33-4732-9F36-F555116F369B}.Release|x64.Build.0 = Release|Any CPU
 		{B587FC28-AB33-4732-9F36-F555116F369B}.Release|x86.ActiveCfg = Release|Any CPU
 		{B587FC28-AB33-4732-9F36-F555116F369B}.Release|x86.Build.0 = Release|Any CPU
+		{A2E92BB3-0F46-42A5-886E-B4078F92756E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2E92BB3-0F46-42A5-886E-B4078F92756E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2E92BB3-0F46-42A5-886E-B4078F92756E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A2E92BB3-0F46-42A5-886E-B4078F92756E}.Debug|x64.Build.0 = Debug|Any CPU
+		{A2E92BB3-0F46-42A5-886E-B4078F92756E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A2E92BB3-0F46-42A5-886E-B4078F92756E}.Debug|x86.Build.0 = Debug|Any CPU
+		{A2E92BB3-0F46-42A5-886E-B4078F92756E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2E92BB3-0F46-42A5-886E-B4078F92756E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2E92BB3-0F46-42A5-886E-B4078F92756E}.Release|x64.ActiveCfg = Release|Any CPU
+		{A2E92BB3-0F46-42A5-886E-B4078F92756E}.Release|x64.Build.0 = Release|Any CPU
+		{A2E92BB3-0F46-42A5-886E-B4078F92756E}.Release|x86.ActiveCfg = Release|Any CPU
+		{A2E92BB3-0F46-42A5-886E-B4078F92756E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
