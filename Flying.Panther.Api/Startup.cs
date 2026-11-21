@@ -46,6 +46,8 @@ public void ConfigureServices(IServiceCollection services)
 
             app.UseRouting();
 
+            app.UseCors();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
