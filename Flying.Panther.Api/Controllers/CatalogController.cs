@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Flying.Panther.Domain.Catalog;
 using Microsoft.AspNetCore.Mvc;
 using Flying.Panther.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Flying.Panther.Api.Controllers;
 
@@ -91,6 +92,7 @@ public IActionResult Put(int id, Item item)
 
       
 [HttpDelete("{id:int}")]
+[Authorize("delete:catalog")]
 public IActionResult Delete(int id)
 {
     var item = _db.Items.Find(id);
